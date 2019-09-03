@@ -2,10 +2,12 @@ package com.shannonfairchild.petadopterspring.services;
 
 import com.shannonfairchild.petadopterspring.model.PetType;
 import com.shannonfairchild.petadopterspring.repositories.PetTypeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PetTypeServiceImpl implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
