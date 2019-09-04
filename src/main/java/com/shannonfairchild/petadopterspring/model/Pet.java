@@ -32,4 +32,7 @@ public class Pet {
     @JoinColumn(name = "type_id")
     private PetType type;
 
+
+    private Boolean featured;
+
 }
