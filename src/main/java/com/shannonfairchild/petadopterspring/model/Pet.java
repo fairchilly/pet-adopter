@@ -19,6 +19,9 @@ public class Pet {
     @NonNull
     private String name;
 
+    @NonNull
+    private String description;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 

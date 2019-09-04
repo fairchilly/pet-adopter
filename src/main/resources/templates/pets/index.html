@@ -4,8 +4,17 @@
 <body>
 <div class="container">
     <strong>These are my pets:</strong>
-    <div th:each="pet : ${pets}">
-        <p th:text="${pet.name}">Pet Name</p>
+    <div class="row">
+        <div class="col-4 pb-3" th:each="pet : ${pets}">
+            <div class="card">
+                <img src="https://placeimg.com/640/480/any" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${pet.name}">Pet Name</h5>
+                    <p class="card-text" th:text="${pet.description}">Pet Description</p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
