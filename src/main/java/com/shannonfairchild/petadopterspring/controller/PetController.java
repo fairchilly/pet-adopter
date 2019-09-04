@@ -24,7 +24,7 @@ public class PetController {
         this.petService = petService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String showPets(Model model) {
         Set<Pet> pets = petService.findAll();
         model.addAttribute("pets", pets);

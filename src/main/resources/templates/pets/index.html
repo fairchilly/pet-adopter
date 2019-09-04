@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/master :: header"></head>
 <body>
+<navbar th:replace="fragments/master :: navbar"></navbar>
 <div class="container">
-    <strong>These are my pets:</strong>
     <div class="row">
         <div class="col-4 pb-3" th:each="pet : ${pets}">
             <div class="card">

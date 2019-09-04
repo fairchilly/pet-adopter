@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header">
-    <link th:rel="stylesheet"  th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <!-- Styles -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link rel="stylesheet"
+          href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <!-- Scripts -->
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
     <title>Pet Adopter</title>
 </head>
 <body>
+<nav class="navbar fixed-top navbar-light bg-light mb-5" style="background-color: #e3f2fd;" th:fragment="navbar">
+    <a class="navbar-brand" href="#">
+        <i class="fa fa-fw fa-lg fa-paw"></i> Pet Adopter
+    </a>
+</nav>
 Master Template
 </body>
 </html>
