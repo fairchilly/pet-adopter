@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${pet.name}">Pet Name</h5>
                     <p class="card-text" th:text="${pet.description}">Pet Description</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a th:href="@{'/pets/' + ${pet.id}}" class="btn btn-primary">More Info</a>
                 </div>
             </div>
         </div>
