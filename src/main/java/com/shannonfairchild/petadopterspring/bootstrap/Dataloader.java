@@ -32,28 +32,28 @@ public class Dataloader implements CommandLineRunner {
         // Pets
         Pet john = Pet.builder()
                 .name("John")
-                .sex(Sex.MALE)
+                .sex(Sex.Male)
                 .description("This is a test description!")
                 .birthDate(LocalDate.now().minusYears(2))
                 .build();
         petService.save(john);
         Pet paul = Pet.builder()
                 .name("Paul")
-                .sex(Sex.MALE)
+                .sex(Sex.Male)
                 .description("He likes to play catch!")
                 .birthDate(LocalDate.now().minusYears(5).minusMonths(2))
                 .build();
         petService.save(paul);
         Pet ringo = Pet.builder()
                 .name("Ringo")
-                .sex(Sex.MALE)
+                .sex(Sex.Male)
                 .description("Ringo is a quiet cat!")
                 .birthDate(LocalDate.now().minusYears(2).minusDays(4))
                 .build();
         petService.save(ringo);
         Pet george = Pet.builder()
                 .name("George")
-                .sex(Sex.MALE)
+                .sex(Sex.Male)
                 .description("George does well among other pets!")
                 .birthDate(LocalDate.now().minusYears(7))
                 .build();

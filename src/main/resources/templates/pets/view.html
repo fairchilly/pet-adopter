@@ -4,7 +4,32 @@
 <body>
 <navbar th:replace="fragments/master :: navbar"></navbar>
 <div class="container">
-    Viewing pet
+    <div class="card">
+        <div class="card-header">
+            Viewing Pet
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <img src="https://placeimg.com/640/480/any" alt="...">
+                </div>
+                <div class="col">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd th:text="${pet.name}">Pet Name</dd>
+                        <dt>Age</dt>
+                        <dd th:text="${pet.calculateAge()}">2 Years Old</dd>
+                        <dt>Sex</dt>
+                        <dd th:text="${pet.sex}">Male</dd>
+                        <dt>Declawed</dt>
+                        <dd th:text="${pet.declawed}">Yes</dd>
+                        <dt>Description</dt>
+                        <dd th:text="${pet.description}">Description</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Data
 @AllArgsConstructor
@@ -32,7 +33,22 @@ public class Pet {
     @JoinColumn(name = "type_id")
     private PetType type;
 
-
     private Boolean featured;
 
+    private Boolean declawed;
+
+    private Boolean specialNeeds;
+
+    public String calculateAge() {
+        String age;
+        Period period = Period.between(this.getBirthDate(), LocalDate.now());
+
+        if (period.getYears() > 0) {
+            age = period.getYears() + " years old";
+        } else {
+            age = period.getMonths() + " months old";
+        }
+
+        return age;
+    }
 }
