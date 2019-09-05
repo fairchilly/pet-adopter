@@ -1,6 +1,8 @@
 package com.shannonfairchild.petadopterspring.controller;
 
+import com.shannonfairchild.petadopterspring.model.Page;
 import com.shannonfairchild.petadopterspring.model.Pet;
+import com.shannonfairchild.petadopterspring.services.PageService;
 import com.shannonfairchild.petadopterspring.services.PetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Set;
 
 @RequestMapping("/pets")
@@ -15,9 +18,11 @@ import java.util.Set;
 public class PetController {
     private static final String VIEWS_PET_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
 
+    private final PageService pageService;
     private final PetService petService;
 
-    public PetController(PetService petService) {
+    public PetController(PageService pageService, PetService petService) {
+        this.pageService = pageService;
         this.petService = petService;
     }
 
@@ -25,6 +30,9 @@ public class PetController {
     public String showPets(Model model) {
         Set<Pet> pets = petService.findAll();
         model.addAttribute("pets", pets);
+
+//        List<Page> pages = pageService.findAllByOrderByRank();
+//        model.addAttribute("pages", pages);
 
         return "pets/index";
     }

@@ -32,6 +32,23 @@ public class NewsController {
         return "/news/index";
     }
 
+    @GetMapping("/create")
+    public String initCreateNewsForm(Model model) {
+        model.addAttribute("news", News.builder().build());
+
+        return VIEWS_NEWS_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/create")
+    public String processCreateNewsForm(@Valid News news, BindingResult result) {
+        if (result.hasErrors()) {
+            return VIEWS_NEWS_CREATE_OR_UPDATE_FORM;
+        } else {
+            newsService.save(news);
+            return "redirect:/news/" + news.getId();
+        }
+    }
+
     @GetMapping("/{newsId}")
     public String viewNews(@PathVariable("newsId") Long newsId, Model model) {
         News news = newsService.findById(newsId);
@@ -49,5 +66,14 @@ public class NewsController {
     }
 
     @PostMapping("/{newsId}/edit")
-    public String processUpdateNewsForm(@Valid News news, BindingResult result, @PathVariable)
+    public String processUpdateNewsForm(@Valid News news, BindingResult result, @PathVariable Long newsId) {
+        if (result.hasErrors()) {
+            return VIEWS_NEWS_CREATE_OR_UPDATE_FORM;
+        } else {
+            news.setId(newsId);
+            News savedNews = newsService.save(news);
+
+            return "redirect:/news/" + savedNews.getId();
+        }
+    }
 }

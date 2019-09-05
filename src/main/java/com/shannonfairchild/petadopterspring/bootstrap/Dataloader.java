@@ -1,8 +1,10 @@
 package com.shannonfairchild.petadopterspring.bootstrap;
 
+import com.shannonfairchild.petadopterspring.model.Page;
 import com.shannonfairchild.petadopterspring.model.Pet;
 import com.shannonfairchild.petadopterspring.model.PetType;
 import com.shannonfairchild.petadopterspring.model.Sex;
+import com.shannonfairchild.petadopterspring.services.PageService;
 import com.shannonfairchild.petadopterspring.services.PetService;
 import com.shannonfairchild.petadopterspring.services.PetTypeService;
 import org.springframework.boot.CommandLineRunner;
@@ -13,16 +15,34 @@ import java.time.LocalDate;
 @Component
 public class Dataloader implements CommandLineRunner {
 
+    private final PageService pageService;
     private final PetTypeService petTypeService;
     private final PetService petService;
 
-    public Dataloader(PetTypeService petTypeService, PetService petService) {
+    public Dataloader(PageService pageService, PetTypeService petTypeService, PetService petService) {
+        this.pageService = pageService;
         this.petTypeService = petTypeService;
         this.petService = petService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        // Pages
+        Page aboutPage = Page.builder()
+                .title("About")
+                .path("about")
+                .html_content("<h1>This is my about page!</h1>")
+                .rank(1)
+                .build();
+        pageService.save(aboutPage);
+        Page contactUsPage = Page.builder()
+                .title("Contact Us")
+                .path("contact")
+                .html_content("<h1>This is my contact us page!</h1>")
+                .rank(2)
+                .build();
+        pageService.save(contactUsPage);
+
         // Pet Types
         PetType cat = PetType.builder().description("Cat").build();
         petTypeService.save(cat);
@@ -35,6 +55,7 @@ public class Dataloader implements CommandLineRunner {
                 .sex(Sex.Male)
                 .description("This is a test description!")
                 .birthDate(LocalDate.now().minusYears(2))
+                .featured(true)
                 .build();
         petService.save(john);
         Pet paul = Pet.builder()

@@ -43,4 +43,12 @@ public class PetServiceImpl implements PetService {
     public void deleteById(Long id) {
         petRepository.deleteById(id);
     }
+
+    @Override
+    public Set<Pet> findByFeaturedTrue() {
+        Set<Pet> pets = new HashSet<>();
+        petRepository.findByFeaturedTrue().forEach(pets::add);
+
+        return pets;
+    }
 }

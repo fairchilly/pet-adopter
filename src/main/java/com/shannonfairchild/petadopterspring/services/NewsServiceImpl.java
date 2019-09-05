@@ -2,10 +2,12 @@ package com.shannonfairchild.petadopterspring.services;
 
 import com.shannonfairchild.petadopterspring.model.News;
 import com.shannonfairchild.petadopterspring.repositories.NewsRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
