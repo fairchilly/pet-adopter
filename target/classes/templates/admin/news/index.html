@@ -5,8 +5,31 @@
 <navbar th:replace="fragments/admin-master :: admin-toolbar"></navbar>
 <div class="container-fluid">
     <div class="row">
-        <nav th:replace="fragments/admin-master :: admin-side-nav">
-        </nav>
+        <nav th:replace="fragments/admin-master :: admin-side-nav"></nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">News Manager</h1>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <tbody>
+                        <tr th:each="newsItem : ${news}">
+                            <td th:text="${newsItem.title}">News Title</td>
+                            <td>
+                                <span class="pull-right">
+                                    <a th:href="@{'/admin/news/edit/' + ${newsItem.id}}" class="btn btn-primary">
+                                        Edit
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
 

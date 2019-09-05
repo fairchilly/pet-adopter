@@ -31,9 +31,6 @@ public class PetController {
         Set<Pet> pets = petService.findAll();
         model.addAttribute("pets", pets);
 
-//        List<Page> pages = pageService.findAllByOrderByRank();
-//        model.addAttribute("pages", pages);
-
         return "pets/index";
     }
 

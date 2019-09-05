@@ -1,9 +1,7 @@
 package com.shannonfairchild.petadopterspring.bootstrap;
 
-import com.shannonfairchild.petadopterspring.model.Page;
-import com.shannonfairchild.petadopterspring.model.Pet;
-import com.shannonfairchild.petadopterspring.model.PetType;
-import com.shannonfairchild.petadopterspring.model.Sex;
+import com.shannonfairchild.petadopterspring.model.*;
+import com.shannonfairchild.petadopterspring.services.NewsService;
 import com.shannonfairchild.petadopterspring.services.PageService;
 import com.shannonfairchild.petadopterspring.services.PetService;
 import com.shannonfairchild.petadopterspring.services.PetTypeService;
@@ -18,11 +16,13 @@ public class Dataloader implements CommandLineRunner {
     private final PageService pageService;
     private final PetTypeService petTypeService;
     private final PetService petService;
+    private final NewsService newsService;
 
-    public Dataloader(PageService pageService, PetTypeService petTypeService, PetService petService) {
+    public Dataloader(PageService pageService, PetTypeService petTypeService, PetService petService, NewsService newsService) {
         this.pageService = pageService;
         this.petTypeService = petTypeService;
         this.petService = petService;
+        this.newsService = newsService;
     }
 
     @Override
@@ -42,6 +42,17 @@ public class Dataloader implements CommandLineRunner {
                 .rank(2)
                 .build();
         pageService.save(contactUsPage);
+
+        // News
+        News newsItem1 = News.builder()
+                .author("Shannon Fairchild")
+                .title("Details on this year's ribfest")
+                .subtitle("This is a subtitle!")
+                .html_content("<h1>Test content!</h1>")
+                .createdAt(LocalDate.now())
+                .build();
+        newsService.save(newsItem1);
+
 
         // Pet Types
         PetType cat = PetType.builder().description("Cat").build();
