@@ -5,7 +5,9 @@
 <navbar th:replace="fragments/admin-master :: admin-toolbar"></navbar>
 <div class="container-fluid">
     <div class="row">
-        <nav th:replace="fragments/admin-master :: admin-side-nav"></nav>
+        <span th:with="currentPage=${'News'}">
+            <nav th:replace="fragments/admin-master :: admin-side-nav"></nav>
+        </span>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">News Manager</h1>
@@ -13,15 +15,20 @@
 
             <div class="row">
                 <div class="col">
-                    <table class="table">
+                    <table class="table table-borderless">
                         <tbody>
                         <tr th:each="newsItem : ${news}">
                             <td th:text="${newsItem.title}">News Title</td>
                             <td>
                                 <span class="pull-right">
-                                    <a th:href="@{'/admin/news/edit/' + ${newsItem.id}}" class="btn btn-primary">
-                                        Edit
-                                    </a>
+                                    <form th:action="@{'/admin/news/delete/' + ${newsItem.id}}" th:method="delete">
+                                        <a th:href="@{'/admin/news/edit/' + ${newsItem.id}}" class="btn btn-primary">
+                                            <i class="fa fa-fw fa-lg fa-edit"></i> Edit
+                                        </a>
+                                        <button th:type="submit" class="btn btn-danger">
+                                            <i class="fa fa-fw fa-lg fa-trash"></i> Delete
+                                        </button>
+                                    </form>
                                 </span>
                             </td>
                         </tr>

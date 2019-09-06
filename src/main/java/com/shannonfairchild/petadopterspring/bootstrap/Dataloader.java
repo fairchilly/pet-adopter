@@ -44,15 +44,16 @@ public class Dataloader implements CommandLineRunner {
         pageService.save(contactUsPage);
 
         // News
-        News newsItem1 = News.builder()
-                .author("Shannon Fairchild")
-                .title("Details on this year's ribfest")
-                .subtitle("This is a subtitle!")
-                .html_content("<h1>Test content!</h1>")
-                .createdAt(LocalDate.now())
-                .build();
-        newsService.save(newsItem1);
-
+        for (int x = 1; x <= 50; x++) {
+            News newsItem = News.builder()
+                    .author("Shannon Fairchild")
+                    .title("Article " + x)
+                    .subtitle("This is a subtitle!")
+                    .html_content("<h1>Test content!</h1>")
+                    .createdAt(LocalDate.now())
+                    .build();
+            newsService.save(newsItem);
+        }
 
         // Pet Types
         PetType cat = PetType.builder().description("Cat").build();
