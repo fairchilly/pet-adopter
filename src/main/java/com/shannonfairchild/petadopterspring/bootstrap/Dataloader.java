@@ -5,13 +5,23 @@ import com.shannonfairchild.petadopterspring.services.NewsService;
 import com.shannonfairchild.petadopterspring.services.PageService;
 import com.shannonfairchild.petadopterspring.services.PetService;
 import com.shannonfairchild.petadopterspring.services.PetTypeService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
+@Slf4j
 @Component
+@Profile("default")
 public class Dataloader implements CommandLineRunner {
+
+    @Autowired
+    Environment env;
 
     private final PageService pageService;
     private final PetTypeService petTypeService;
@@ -27,23 +37,42 @@ public class Dataloader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Pages
+        // Run if profile is default or if there is no data in database
+        if (Arrays.stream(env.getActiveProfiles())
+                .anyMatch(env -> env.equalsIgnoreCase("default"))
+        || pageService.findAll().size() == 0) {
+            log.info("Loading pages...");
+            loadPages();
+
+            log.info("Loading news...");
+            loadNews();
+
+            log.info("Loading pet types...");
+            loadPetTypes();
+
+            log.info("Loading pets");
+            loadPets();
+        }
+    }
+
+    private void loadPages() {
         Page aboutPage = Page.builder()
                 .title("About")
                 .path("about")
                 .html_content("<h1>This is my about page!</h1>")
-                .rank(1)
+                .priority(1)
                 .build();
         pageService.save(aboutPage);
         Page contactUsPage = Page.builder()
                 .title("Contact Us")
                 .path("contact")
                 .html_content("<h1>This is my contact us page!</h1>")
-                .rank(2)
+                .priority(2)
                 .build();
         pageService.save(contactUsPage);
+    }
 
-        // News
+    private void loadNews() {
         for (int x = 1; x <= 50; x++) {
             News newsItem = News.builder()
                     .author("Shannon Fairchild")
@@ -54,14 +83,16 @@ public class Dataloader implements CommandLineRunner {
                     .build();
             newsService.save(newsItem);
         }
+    }
 
-        // Pet Types
+    private void loadPetTypes() {
         PetType cat = PetType.builder().description("Cat").build();
         petTypeService.save(cat);
         PetType dog = PetType.builder().description("Dog").build();
         petTypeService.save(dog);
+    }
 
-        // Pets
+    private void loadPets() {
         Pet john = Pet.builder()
                 .name("John")
                 .sex(Sex.Male)

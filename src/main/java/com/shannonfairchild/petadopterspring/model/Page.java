@@ -26,5 +26,5 @@ public class Page {
     private String html_content;
 
     @NonNull
-    private Integer rank;
+    private Integer priority;
 }

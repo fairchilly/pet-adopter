@@ -52,9 +52,9 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
-    public List<Page> findAllByOrderByRank() {
+    public List<Page> findAllByOrderByPriority() {
         List<Page> pages = new ArrayList<>();
-        pageRepository.findAllByOrderByRank().forEach(pages::add);
+        pageRepository.findAllByOrderByPriority().forEach(pages::add);
 
         return pages;
     }

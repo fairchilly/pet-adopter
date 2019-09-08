@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PageService extends CrudService<Page, Long> {
     Page findByPath(String path);
-    List<Page> findAllByOrderByRank();
+    List<Page> findAllByOrderByPriority();
 }

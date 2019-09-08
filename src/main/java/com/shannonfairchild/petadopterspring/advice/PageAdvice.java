@@ -21,7 +21,7 @@ public class PageAdvice {
     @ModelAttribute("navPages")
     public List<Page> getNavPages(){
         List<Page> pages = new ArrayList<>();
-        pageService.findAllByOrderByRank().forEach(pages::add);
+        pageService.findAllByOrderByPriority().forEach(pages::add);
 
         return pages;
     }

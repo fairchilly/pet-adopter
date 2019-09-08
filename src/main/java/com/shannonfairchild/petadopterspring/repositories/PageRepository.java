@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PageRepository extends JpaRepository<Page, Long> {
     Page findByPath(String path);
-    List<Page> findAllByOrderByRank();
+    List<Page> findAllByOrderByPriority();
 }
