@@ -13,34 +13,35 @@
                 <h1 class="h2">Edit Pet</h1>
             </div>
 
-            <form th:object="${news}" th:action="@{'/admin/news/' + ${news.id}}" class="form-horizontal" method="post">
+            <form th:object="${news}" th:action="@{'/admin/news/edit/' + ${news.id}}" class="form-horizontal" method="post">
                 <input type="hidden" name="id" th:value="*{id}"/>
+                <input type="hidden" name="createdAt" th:value="*{createdAt}"/>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" th:value="${news.author}">
+                    <input type="text" class="form-control" id="author" th:value="${news.author}" th:field="*{author}">
                 </div>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" th:value="${news.title}">
+                    <input type="text" class="form-control" id="title" th:value="${news.title}" th:field="*{title}">
                 </div>
                 <div class="form-group">
                     <label for="subtitle">Subtitle</label>
-                    <input type="text" class="form-control" id="subtitle" th:value="${news.subtitle}">
+                    <input type="text" class="form-control" id="subtitle" th:value="${news.subtitle}" th:field="*{subtitle}">
                 </div>
                 <div class="form-group">
                     <label for="html_content">Visible?</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleYes" value="yes" th:checked="${news.visible} == true">
+                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleYes" value="yes" th:checked="${news.visible} == true" th:field="*{visible}">
                         <label class="form-check-label" for="isVisibleYes">Yes</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleNo" value="no" th:checked="${news.visible} == false">
+                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleNo" value="no" th:checked="${news.visible} == false" th:field="*{visible}">
                         <label class="form-check-label" for="isVisibleNo">No</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="html_content">Content</label>
-                    <textarea class="form-control" id="html_content" rows="3" th:text="${news.html_content}"></textarea>
+                    <textarea class="form-control" id="html_content" rows="3" th:text="${news.html_content}" th:field="*{html_content}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a th:href="@{'/admin/news}" class="btn btn-danger">Back</a>

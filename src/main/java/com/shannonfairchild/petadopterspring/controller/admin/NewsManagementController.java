@@ -2,6 +2,7 @@ package com.shannonfairchild.petadopterspring.controller.admin;
 
 import com.shannonfairchild.petadopterspring.model.News;
 import com.shannonfairchild.petadopterspring.services.NewsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @RequestMapping("/admin/news")
 @Controller
 public class NewsManagementController {
@@ -57,6 +59,9 @@ public class NewsManagementController {
 
     @PostMapping("/edit/{newsId}")
     public String processUpdateNewsForm(@Valid News news, BindingResult result, @PathVariable Long newsId) {
+
+        log.info(news.toString());
+
         if (result.hasErrors()) {
             return VIEWS_NEWS_CREATE_OR_UPDATE_FORM;
         } else {
