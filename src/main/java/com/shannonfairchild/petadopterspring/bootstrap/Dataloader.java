@@ -80,7 +80,6 @@ public class Dataloader implements CommandLineRunner {
                     .subtitle("This is a subtitle!")
                     .html_content("<h1>Test content!</h1>")
                     .visible(true)
-                    .createdAt(LocalDate.now())
                     .build();
             newsService.save(newsItem);
         }

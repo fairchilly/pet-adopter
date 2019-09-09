@@ -60,13 +60,13 @@ public class NewsManagementController {
     @PostMapping("/edit/{newsId}")
     public String processUpdateNewsForm(@Valid News news, BindingResult result, @PathVariable Long newsId) {
 
-        log.info(news.toString());
-
         if (result.hasErrors()) {
             return VIEWS_NEWS_CREATE_OR_UPDATE_FORM;
         } else {
             news.setId(newsId);
             News savedNews = newsService.save(news);
+
+            log.info(savedNews.toString());
 
             return "redirect:/admin/news/" + savedNews.getId();
         }

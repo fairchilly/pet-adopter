@@ -15,7 +15,6 @@
 
             <form th:object="${news}" th:action="@{'/admin/news/edit/' + ${news.id}}" class="form-horizontal" method="post">
                 <input type="hidden" name="id" th:value="*{id}"/>
-                <input type="hidden" name="createdAt" th:value="*{createdAt}"/>
                 <div class="form-group">
                     <label for="author">Author</label>
                     <input type="text" class="form-control" id="author" th:value="${news.author}" th:field="*{author}">
