@@ -8,31 +8,53 @@
         <span th:with="currentPage=${'News'}">
             <nav th:replace="fragments/admin-master :: admin-side-nav"></nav>
         </span>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Edit Article</h1>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 pb-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Edit Pet</h1>
             </div>
 
-            <form>
+            <form th:object="${news}" th:action="@{'/admin/news/' + ${news.id}}" class="form-horizontal" method="post">
+                <input type="hidden" name="id" th:value="*{id}"/>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.
-                    </small>
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" th:value="${news.author}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" th:value="${news.title}">
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group">
+                    <label for="subtitle">Subtitle</label>
+                    <input type="text" class="form-control" id="subtitle" th:value="${news.subtitle}">
+                </div>
+                <div class="form-group">
+                    <label for="html_content">Visible?</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleYes" value="yes" th:checked="${news.visible} == true">
+                        <label class="form-check-label" for="isVisibleYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isVisible" id="isVisibleNo" value="no" th:checked="${news.visible} == false">
+                        <label class="form-check-label" for="isVisibleNo">No</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="html_content">Content</label>
+                    <textarea class="form-control" id="html_content" rows="3" th:text="${news.html_content}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a th:href="@{'/admin/news}" class="btn btn-danger">Back</a>
             </form>
         </main>
     </div>
+
+    <script src="https://cdn.tiny.cloud/1/b94a7zozs51eum314lcxpa6y8a0hns0pidu3u7bvw4gvenco/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            height: '480px'
+        });
+    </script>
 </div>
 
 </body>
