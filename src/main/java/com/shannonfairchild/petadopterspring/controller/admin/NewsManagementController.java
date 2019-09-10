@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/admin/news")
@@ -27,7 +27,7 @@ public class NewsManagementController {
 
     @GetMapping("")
     public String showAllNews(Model model) {
-        Set<News> news = new HashSet<>();
+        List<News> news = new ArrayList<>();
         newsService.findAll().forEach(news::add);
         model.addAttribute("news", news);
 
