@@ -12,8 +12,12 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
                 <h1 class="h2">News Manager</h1>
                 <a th:href="@{'/admin/news/create'}" class="btn btn-success">
-                    <i class="fa fa-fw fa-lg fa-plus"></i> Add
+                    <i class="fa fa-fw fa-lg fa-pencil"></i> Create New Article
                 </a>
+            </div>
+
+            <div class="alert alert-success" role="alert" th:if="${success}">
+                Article successfully saved!
             </div>
 
             <div class="row">

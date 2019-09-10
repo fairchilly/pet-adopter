@@ -1,7 +1,24 @@
-.container {
-    padding-top: 5rem;
+body, html {
+    height: 100%;
 }
 
+.bg {
+    background-image: url("../images/pet-adopter-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.jumbotron-home {
+    top: 25%;
+    background-color: rgba(230, 230, 230, 0.9);
+}
+
+.container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
 
 /*
  * Sidebar
