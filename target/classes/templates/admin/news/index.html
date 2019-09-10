@@ -8,14 +8,17 @@
         <span th:with="currentPage=${'News'}">
             <nav th:replace="fragments/admin-master :: admin-side-nav"></nav>
         </span>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-5 pb-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
                 <h1 class="h2">News Manager</h1>
+                <a th:href="@{'/admin/news/create'}" class="btn btn-success">
+                    <i class="fa fa-fw fa-lg fa-plus"></i> Add
+                </a>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <table class="table table-borderless">
+                    <table class="table table-borderless table-striped">
                         <tbody>
                         <tr th:each="newsItem : ${news}">
                             <td th:text="${newsItem.title}">News Title</td>

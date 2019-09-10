@@ -3,6 +3,7 @@ package com.shannonfairchild.petadopterspring.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
@@ -15,10 +16,10 @@ public class News extends Auditable<String> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @NotEmpty(message = "Please enter an author")
     private String author;
 
-    @NonNull
+    @NotEmpty(message = "Please enter a title")
     private String title;
 
     private String subtitle;
