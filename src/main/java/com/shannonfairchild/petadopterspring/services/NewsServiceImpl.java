@@ -45,4 +45,12 @@ public class NewsServiceImpl implements NewsService {
     public void deleteById(Long id) {
         newsRepository.deleteById(id);
     }
+
+    @Override
+    public List<News> findTop3ByOrderByCreatedDateDesc() {
+        List<News> news = new ArrayList<>();
+        newsRepository.findTop3ByOrderByCreatedDateDesc().forEach(news::add);
+
+        return news;
+    }
 }

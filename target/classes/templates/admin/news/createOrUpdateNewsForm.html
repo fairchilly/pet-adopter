@@ -13,7 +13,7 @@
                 <h1 class="h2">Edit News Article</h1>
             </div>
 
-            <form th:object="${news}" class="form-horizontal" method="post">
+            <form th:object="${news}" class="form-horizontal" method="post" autocomplete="off">
                 <input type="hidden" name="id" th:value="*{id}"/>
                 <div class="form-group">
                     <label for="author">Author</label>

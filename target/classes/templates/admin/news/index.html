@@ -22,10 +22,18 @@
 
             <div class="row">
                 <div class="col">
-                    <table class="table table-borderless table-striped">
+                    <table id="newsTable" class="table table-borderless table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Article Title</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr th:each="newsItem : ${news}">
                             <td th:text="${newsItem.title}">News Title</td>
+                            <td th:text="${newsItem.createdDate}">Date</td>
                             <td>
                                 <span class="pull-right">
                                     <form th:action="@{'/admin/news/delete/' + ${newsItem.id}}" th:method="delete">
@@ -46,6 +54,10 @@
         </main>
     </div>
 </div>
-
+<script>
+    $(function(){
+        $('#newsTable').DataTable();
+    });
+</script>
 </body>
 </html>
