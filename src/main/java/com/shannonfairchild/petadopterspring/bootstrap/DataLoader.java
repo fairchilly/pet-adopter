@@ -80,6 +80,7 @@ public class DataLoader implements CommandLineRunner {
                 .roles(new HashSet<>())
                 .build();
         user.addRole(userRole);
+        userService.save(user);
 
         User admin = User.builder()
                 .email("admin@gmail.com")
@@ -90,6 +91,7 @@ public class DataLoader implements CommandLineRunner {
                 .roles(new HashSet<>())
                 .build();
         admin.addRole(adminRole);
+        userService.save(admin);
 
         User master = User.builder()
                 .email("master@gmail.com")
@@ -100,6 +102,7 @@ public class DataLoader implements CommandLineRunner {
                 .roles(new HashSet<>())
                 .build();
         master.addRoles(new HashSet<>(Arrays.asList(userRole, adminRole)));
+        userService.save(master);
 
     }
 
