@@ -14,8 +14,8 @@
                 <hr class="my-4">
                 <p>With the backend CMS, you can modify animals, news items, and pages.</p>
                 <p class="lead">
-                    <a class="btn btn-success btn-lg" href="#" role="button">Admin Sign In</a>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">View Docs</a>
+                    <a class="btn btn-success btn-lg" th:href="@{'/admin/pets'}" role="button">Admin Dashboard</a>
+                    <a class="btn btn-primary btn-lg" href="https://github.com/fairchilly/pet-adopter-spring/blob/master/README.md" role="button">View Docs</a>
                 </p>
             </div>
         </div>
@@ -60,9 +60,11 @@
             <div class="card-body">
                 <div th:each="newsItem,iteration : ${news}" class="news-item">
                     <h5 class="card-title" th:text="${newsItem.title}">News Title</h5>
-                    <p class="meta">May 1, 2019</p>
-                    <p class="card-text" th:text="${newsItem.subtitle}">News Subtitle</p>
-                    <a th:href="@{'/news/view/' + ${newsItem.id}}" class="btn btn-primary">View</a>
+                    <p class="meta" th:text="${#temporals.format(newsItem.createdDate, 'MMMM d, yyyy')}">May 1, 2019</p>
+                    <p>
+                        <span class="card-text" th:text="${newsItem.substringSubtitle()}">News Subtitle</span>
+                        <a th:href="@{'/news/view/' + ${newsItem.id}}">...read more</a>
+                    </p>
                     <hr th:unless="${iteration.count == news.size()}">
                 </div>
             </div>

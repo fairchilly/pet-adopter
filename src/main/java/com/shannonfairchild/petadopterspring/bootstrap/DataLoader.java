@@ -54,9 +54,6 @@ public class DataLoader implements CommandLineRunner {
             log.info("Loading news...");
             loadNews();
 
-            log.info("Loading pet types...");
-            loadPetTypes();
-
             log.info("Loading pets");
             loadPets();
         }
@@ -136,20 +133,19 @@ public class DataLoader implements CommandLineRunner {
         }
     }
 
-    private void loadPetTypes() {
+    private void loadPets() {
         PetType cat = PetType.builder().description("Cat").build();
         petTypeService.save(cat);
         PetType dog = PetType.builder().description("Dog").build();
         petTypeService.save(dog);
-    }
 
-    private void loadPets() {
         Pet john = Pet.builder()
                 .name("John")
                 .sex(Sex.Male)
                 .description("This is a test description!")
                 .birthDate(LocalDate.now().minusYears(2))
                 .featured(true)
+                .type(dog)
                 .build();
         petService.save(john);
         Pet paul = Pet.builder()
@@ -157,6 +153,7 @@ public class DataLoader implements CommandLineRunner {
                 .sex(Sex.Male)
                 .description("He likes to play catch!")
                 .birthDate(LocalDate.now().minusYears(5).minusMonths(2))
+                .type(dog)
                 .build();
         petService.save(paul);
         Pet ringo = Pet.builder()
@@ -164,6 +161,7 @@ public class DataLoader implements CommandLineRunner {
                 .sex(Sex.Male)
                 .description("Ringo is a quiet cat!")
                 .birthDate(LocalDate.now().minusYears(2).minusDays(4))
+                .type(cat)
                 .build();
         petService.save(ringo);
         Pet george = Pet.builder()
@@ -171,6 +169,7 @@ public class DataLoader implements CommandLineRunner {
                 .sex(Sex.Male)
                 .description("George does well among other pets!")
                 .birthDate(LocalDate.now().minusYears(7))
+                .type(cat)
                 .build();
         petService.save(george);
     }

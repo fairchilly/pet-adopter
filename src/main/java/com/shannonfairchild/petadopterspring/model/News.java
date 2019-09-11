@@ -28,4 +28,14 @@ public class News extends Auditable<String> {
     private String html_content;
 
     private Boolean visible;
+
+    public String substringSubtitle() {
+        int length = 100;
+
+        if (subtitle.length() >= length) {
+            return subtitle.substring(0, length);
+        }
+
+        return subtitle;
+    }
 }

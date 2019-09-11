@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Page {
+public class Page extends Auditable<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

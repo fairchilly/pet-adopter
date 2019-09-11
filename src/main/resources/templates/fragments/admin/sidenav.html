@@ -6,7 +6,7 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{'/admin/pets'}">
+                <a class="nav-link" th:href="@{'/admin/pets'}" th:classappend="${currentPage} == 'Pets' ? 'active' : ''">
                     <i class="fa fa-lg fa-fw fa-paw"></i>
                     Pet Management
                 </a>
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{'/admin/pages'}" th:classappend="${currentPage} == 'Pages' ? 'active' : ''">
                     <i class="fa fa-lg fa-fw fa-file-o"></i>
                     Page Management
                 </a>

@@ -12,7 +12,7 @@ import java.time.Period;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Pet {
+public class Pet extends Auditable<String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,10 +34,6 @@ public class Pet {
     private PetType type;
 
     private Boolean featured;
-
-    private Boolean declawed;
-
-    private Boolean specialNeeds;
 
     public String calculateAge() {
         String age;
