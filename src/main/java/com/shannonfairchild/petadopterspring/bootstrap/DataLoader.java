@@ -18,7 +18,7 @@ import java.util.Arrays;
 @Slf4j
 @Component
 @Profile("default")
-public class Dataloader implements CommandLineRunner {
+public class DataLoader implements CommandLineRunner {
 
     @Autowired
     Environment env;
@@ -28,7 +28,7 @@ public class Dataloader implements CommandLineRunner {
     private final PetService petService;
     private final NewsService newsService;
 
-    public Dataloader(PageService pageService, PetTypeService petTypeService, PetService petService, NewsService newsService) {
+    public DataLoader(PageService pageService, PetTypeService petTypeService, PetService petService, NewsService newsService) {
         this.pageService = pageService;
         this.petTypeService = petTypeService;
         this.petService = petService;
