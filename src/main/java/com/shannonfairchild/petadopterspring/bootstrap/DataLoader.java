@@ -1,19 +1,18 @@
 package com.shannonfairchild.petadopterspring.bootstrap;
 
 import com.shannonfairchild.petadopterspring.model.*;
-import com.shannonfairchild.petadopterspring.services.NewsService;
-import com.shannonfairchild.petadopterspring.services.PageService;
-import com.shannonfairchild.petadopterspring.services.PetService;
-import com.shannonfairchild.petadopterspring.services.PetTypeService;
+import com.shannonfairchild.petadopterspring.services.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.HashSet;
 
 @Slf4j
 @Component
@@ -23,12 +22,16 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     Environment env;
 
+    private final RoleService roleService;
+    private final UserService userService;
     private final PageService pageService;
     private final PetTypeService petTypeService;
     private final PetService petService;
     private final NewsService newsService;
 
-    public DataLoader(PageService pageService, PetTypeService petTypeService, PetService petService, NewsService newsService) {
+    public DataLoader(RoleService roleService, UserService userService, PageService pageService, PetTypeService petTypeService, PetService petService, NewsService newsService) {
+        this.roleService = roleService;
+        this.userService = userService;
         this.pageService = pageService;
         this.petTypeService = petTypeService;
         this.petService = petService;
@@ -40,7 +43,11 @@ public class DataLoader implements CommandLineRunner {
         // Run if profile is default or if there is no data in database
         if (Arrays.stream(env.getActiveProfiles())
                 .anyMatch(env -> env.equalsIgnoreCase("default"))
-        || pageService.findAll().size() == 0) {
+                || pageService.findAll().size() == 0) {
+
+            log.info("Loading users and roles...");
+            loadUsersAndRoles();
+
             log.info("Loading pages...");
             loadPages();
 
@@ -53,6 +60,47 @@ public class DataLoader implements CommandLineRunner {
             log.info("Loading pets");
             loadPets();
         }
+    }
+
+    private void loadUsersAndRoles() {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String secret = "{bcrypt}" + encoder.encode("password");
+
+        Role userRole = Role.builder().name("ROLE_USER").build();
+        roleService.save(userRole);
+        Role adminRole = Role.builder().name("ROLE_ADMIN").build();
+        roleService.save(adminRole);
+
+        User user = User.builder()
+                .email("user@gmail.com")
+                .firstName("Normal")
+                .lastName("User")
+                .password(secret)
+                .enabled(true)
+                .roles(new HashSet<>())
+                .build();
+        user.addRole(userRole);
+
+        User admin = User.builder()
+                .email("admin@gmail.com")
+                .firstName("Admin")
+                .lastName("User")
+                .password(secret)
+                .enabled(true)
+                .roles(new HashSet<>())
+                .build();
+        admin.addRole(adminRole);
+
+        User master = User.builder()
+                .email("master@gmail.com")
+                .firstName("Master")
+                .lastName("User")
+                .password(secret)
+                .enabled(true)
+                .roles(new HashSet<>())
+                .build();
+        master.addRoles(new HashSet<>(Arrays.asList(userRole, adminRole)));
+
     }
 
     private void loadPages() {

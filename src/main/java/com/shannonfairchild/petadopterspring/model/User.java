@@ -9,7 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -55,7 +54,7 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
 
     public String getFullName() {
         return firstName + " " + lastName;
@@ -65,6 +64,14 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public void addRoles(Set<Role> roles) {
+        roles.forEach(this::addRole);
     }
 
     @Override
