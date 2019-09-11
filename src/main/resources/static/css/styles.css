@@ -10,6 +10,15 @@ body, html {
     height: 100%;
 }
 
+.news-item h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+.news-item .meta {
+    margin-bottom: 1.25rem;
+    color: #999;
+}
+
 .jumbotron-home {
     /*position: absolute;*/
     /*left: 0;*/
