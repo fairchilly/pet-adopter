@@ -1,12 +1,12 @@
 package com.shannonfairchild.petadopterspring.bootstrap;
 
 
-import com.shannonfairchild.petadopterspring.services.PrivilegeService;
 import com.shannonfairchild.petadopterspring.services.RoleService;
 import com.shannonfairchild.petadopterspring.services.UserService;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class SecurityDataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -15,16 +15,17 @@ public class SecurityDataLoader implements ApplicationListener<ContextRefreshedE
 
     private final UserService userService;
     private final RoleService roleService;
-    private final PrivilegeService privilegeService;
 
-    public SecurityDataLoader(UserService userService, RoleService roleService, PrivilegeService privilegeService) {
+    public SecurityDataLoader(UserService userService,
+                              RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
-        this.privilegeService = privilegeService;
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-
+        if (alreadySetup)
+            return;
     }
 }
