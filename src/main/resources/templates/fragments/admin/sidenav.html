@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidenav">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/pets'}">
+                    <i class="fa fa-lg fa-fw fa-paw"></i>
+                    Pet Management
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/admin/news'}" th:classappend="${currentPage} == 'News' ? 'active' : ''">
+                    <i class="fa fa-lg fa-fw fa-newspaper-o"></i>
+                    News Management
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-lg fa-fw fa-file-o"></i>
+                    Page Management
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
