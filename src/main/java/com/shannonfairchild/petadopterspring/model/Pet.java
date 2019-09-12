@@ -33,6 +33,9 @@ public class Pet extends Auditable<String> {
     @JoinColumn(name = "type_id")
     private PetType type;
 
+    @NonNull
+    private String image;
+
     private Boolean featured;
 
     public String calculateAge() {
