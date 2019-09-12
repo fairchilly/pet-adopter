@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<navbar th:replace="fragments/admin/navbar :: navbar"></navbar>
+<div class="container-fluid">
+    <div class="row">
+        <span th:with="currentPage=${'Pages'}">
+            <nav th:replace="fragments/admin/sidenav :: sidenav"></nav>
+        </span>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-5 pb-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Edit Page</h1>
+            </div>
+
+            <form th:object="${page}" class="form-horizontal" method="post" autocomplete="off">
+                <input type="hidden" name="id" th:value="*{id}"/>
+
+                <div class="form-group">
+                    <label for="title">Page Title</label>
+                    <input type="text"
+                           class="form-control"
+                           id="title"
+                           required="required"
+                           th:value="${page.title}"
+                           th:field="*{title}">
+                    <small th:errors="*{title}" class="text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="path">
+                        Path (letters only)
+                    </label>
+                    <input type="text"
+                           class="form-control"
+                           id="path"
+                           required="required"
+                           placeholder="about"
+                           pattern="[A-Za-z]{1,50}"
+                           th:value="${page.path}"
+                           th:field="*{path}">
+                    <small th:errors="*{path}" class="text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select class="form-control"
+                            id="priority"
+                            required="required"
+                            th:field="*{priority}">
+                        <th:block th:each="number : ${#numbers.sequence(1,99)}">
+                            <option th:text="${number}" th:value="${number}">1</option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="html_content">Content</label>
+                    <textarea class="form-control" id="html_content" rows="3" th:text="${page.html_content}" th:field="*{html_content}"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a th:href="@{'/admin/pages'}" class="btn btn-danger">Back</a>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://cdn.tiny.cloud/1/b94a7zozs51eum314lcxpa6y8a0hns0pidu3u7bvw4gvenco/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            content_css : "/webjars/bootstrap/4.3.1/css/bootstrap.min.css",
+            content_style: "body {padding: 20px}",
+            plugins: "template",
+            menubar: "tools table format view insert edit",
+            height: '480px',
+            templates: [
+                {title: 'Card', description: 'Bootstrap Card', url: '/snippets/card.html'},
+                {title: 'One Column', description: 'One Column Row', url: '/snippets/1-col.html'},
+                {title: 'Two Columns', description: 'Two Column Row', url: '/snippets/2-col.html'},
+                {title: 'Three Columns', description: 'Three Column Row', url: '/snippets/3-col.html'},
+            ]
+        });
+    </script>
+</div>
+
+</body>
+</html>

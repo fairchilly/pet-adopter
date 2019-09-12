@@ -26,14 +26,14 @@
                         <thead class="thead-dark">
                         <tr>
                             <th>Article Title</th>
-                            <th>Date</th>
+                            <th>Date Added</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="newsItem : ${news}">
                             <td th:text="${newsItem.title}">News Title</td>
-                            <td th:text="${newsItem.createdDate}">Date</td>
+                            <td th:text="${#temporals.format(newsItem.createdDate, 'yyyy-MM-dd')}">Date Added</td>
                             <td>
                                 <span class="pull-right">
                                     <form th:action="@{'/admin/news/delete/' + ${newsItem.id}}" th:method="delete">

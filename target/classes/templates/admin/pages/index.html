@@ -5,19 +5,19 @@
 <navbar th:replace="fragments/admin/navbar :: navbar"></navbar>
 <div class="container-fluid">
     <div class="row">
-        <span th:with="currentPage=${'News'}">
+        <span th:with="currentPage=${'Pages'}">
             <nav th:replace="fragments/admin/sidenav :: sidenav"></nav>
         </span>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-5 pb-5">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
-                <h1 class="h2">News Management</h1>
-                <a th:href="@{'/admin/news/create'}" class="btn btn-success">
-                    <i class="fa fa-fw fa-lg fa-pencil"></i> Create New Article
+                <h1 class="h2">Page Management</h1>
+                <a th:href="@{'/admin/pages/create'}" class="btn btn-success">
+                    <i class="fa fa-fw fa-lg fa-pencil"></i> Create New Page
                 </a>
             </div>
 
             <div class="alert alert-success" role="alert" th:if="${success}">
-                Article successfully saved!
+                Page successfully saved!
             </div>
 
             <div class="row">
@@ -25,19 +25,23 @@
                     <table id="dataTable" class="table table-borderless table-striped">
                         <thead class="thead-dark">
                         <tr>
-                            <th>Article Title</th>
-                            <th>Date Added</th>
+                            <th>Page Name</th>
+                            <th>Url</th>
+                            <th>Priority</th>
+                            <th>Last Modified</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="newsItem : ${news}">
-                            <td th:text="${newsItem.title}">News Title</td>
-                            <td th:text="${#temporals.format(newsItem.createdDate, 'yyyy-MM-dd')}">Date Added</td>
+                        <tr th:each="page : ${pages}">
+                            <td th:text="${page.title}">Page Title</td>
+                            <td th:text="${page.path}">Page Path</td>
+                            <td th:text="${page.priority}">Page Priority</td>
+                            <td th:text="${#temporals.format(page.lastModifiedDate, 'yyyy-MM-dd')}">Date Modified</td>
                             <td>
                                 <span class="pull-right">
-                                    <form th:action="@{'/admin/news/delete/' + ${newsItem.id}}" th:method="delete">
-                                        <a th:href="@{'/admin/news/edit/' + ${newsItem.id}}" class="btn btn-primary">
+                                    <form th:action="@{'/admin/pages/delete/' + ${page.id}}" th:method="delete">
+                                        <a th:href="@{'/admin/pages/edit/' + ${page.id}}" class="btn btn-primary">
                                             <i class="fa fa-fw fa-lg fa-edit"></i> Edit
                                         </a>
                                         <button th:type="submit" class="btn btn-danger">
