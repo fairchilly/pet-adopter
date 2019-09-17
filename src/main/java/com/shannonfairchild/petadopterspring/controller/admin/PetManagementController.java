@@ -5,7 +5,6 @@ import com.shannonfairchild.petadopterspring.model.PetType;
 import com.shannonfairchild.petadopterspring.model.Sex;
 import com.shannonfairchild.petadopterspring.services.PetService;
 import com.shannonfairchild.petadopterspring.services.PetTypeService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 
-@Slf4j
 @RequestMapping("/admin/pets")
 @Controller
 public class PetManagementController {

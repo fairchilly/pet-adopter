@@ -4,7 +4,6 @@ import com.shannonfairchild.petadopterspring.model.News;
 import com.shannonfairchild.petadopterspring.model.Pet;
 import com.shannonfairchild.petadopterspring.services.NewsService;
 import com.shannonfairchild.petadopterspring.services.PetService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.Set;
 
-@Slf4j
 @Controller
 public class HomeController {
 
@@ -25,7 +23,7 @@ public class HomeController {
     }
 
     @GetMapping("")
-    public String index(Model model){
+    public String index(Model model) {
         Set<Pet> featuredPets = petService.findFeatured();
         model.addAttribute("featuredPets", featuredPets);
 

@@ -2,7 +2,6 @@ package com.shannonfairchild.petadopterspring.controller.admin;
 
 import com.shannonfairchild.petadopterspring.model.News;
 import com.shannonfairchild.petadopterspring.services.NewsService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +12,6 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @RequestMapping("/admin/news")
 @Controller
 public class NewsManagementController {
