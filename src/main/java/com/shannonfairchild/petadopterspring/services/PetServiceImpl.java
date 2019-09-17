@@ -45,9 +45,9 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Set<Pet> findByFeaturedTrue() {
+    public Set<Pet> findFeatured() {
         Set<Pet> pets = new HashSet<>();
-        petRepository.findByFeaturedTrue().forEach(pets::add);
+        petRepository.findTop5ByFeaturedTrueOrderByCreatedDate().forEach(pets::add);
 
         return pets;
     }

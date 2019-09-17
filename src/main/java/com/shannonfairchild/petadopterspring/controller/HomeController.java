@@ -26,8 +26,8 @@ public class HomeController {
 
     @GetMapping("")
     public String index(Model model){
-        Set<Pet> pets = petService.findByFeaturedTrue();
-        model.addAttribute("pets", pets);
+        Set<Pet> featuredPets = petService.findFeatured();
+        model.addAttribute("featuredPets", featuredPets);
 
         List<News> news = newsService.findTop3ByOrderByCreatedDateDesc();
         model.addAttribute("news", news);

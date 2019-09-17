@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Set;
 
 public interface PetRepository extends JpaRepository<Pet, Long> {
-    Set<Pet> findByFeaturedTrue();
+    Set<Pet> findTop5ByFeaturedTrueOrderByCreatedDate();
 }

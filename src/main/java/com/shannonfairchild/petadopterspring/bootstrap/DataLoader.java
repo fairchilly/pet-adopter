@@ -163,7 +163,7 @@ public class DataLoader implements CommandLineRunner {
                     .sex(Sex.Male)
                     .description(faker.lorem().sentence())
                     .birthDate(LocalDate.now().minusYears(x))
-                    .featured(true)
+                    .featured(false)
                     .type(dog)
                     .image("http://place-puppy.com/300x300")
                     .build();
