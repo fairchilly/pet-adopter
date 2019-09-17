@@ -53,4 +53,12 @@ public class NewsServiceImpl implements NewsService {
 
         return news;
     }
+
+    @Override
+    public List<News> findAllByOrderByCreatedDateDesc() {
+        List<News> news = new ArrayList<>();
+        newsRepository.findAllByOrderByCreatedDateDesc().forEach(news::add);
+
+        return news;
+    }
 }

@@ -33,7 +33,7 @@
                         <a th:href="@{'/pets/' + ${featured.id}}">
                             <img class="d-block w-100" th:src="${featured.image}" th:alt="${featured.name}">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 th:text="${featured.name}">Pet Name</h5>
+                                <h2 class="featured-name" th:text="${featured.name}">Pet Name</h2>
                             </div>
                         </a>
                     </div>

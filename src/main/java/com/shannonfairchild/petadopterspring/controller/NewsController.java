@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.Set;
+import java.util.List;
 
 @RequestMapping("/news")
 @Controller
@@ -25,8 +25,8 @@ public class NewsController {
     }
 
     @GetMapping("")
-    public String showNews(Model model){
-        Set<News> news = newsService.findAll();
+    public String showNews(Model model) {
+        List<News> news = newsService.findAllByOrderByCreatedDateDesc();
         model.addAttribute("news", news);
 
         return "/news/index";
@@ -51,8 +51,8 @@ public class NewsController {
 
     @GetMapping("/{newsId}")
     public String viewNews(@PathVariable("newsId") Long newsId, Model model) {
-        News news = newsService.findById(newsId);
-        model.addAttribute("news", news);
+        News newsItem = newsService.findById(newsId);
+        model.addAttribute("newsItem", newsItem);
 
         return "/news/view";
     }

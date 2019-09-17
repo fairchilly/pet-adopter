@@ -7,11 +7,13 @@
     <div class="row">
         <div class="col-4 pb-3" th:each="pet : ${pets}">
             <div class="card">
-                <img th:src="${pet.image}" class="card-img-top" th:alt="${pet.name}">
+                <img th:src="${pet.image} ? ${pet.image} : @{/images/pet-placeholder.jpg}" class="card-img-top" th:alt="${pet.name}">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${pet.name}">Pet Name</h5>
                     <p class="card-text" th:text="${pet.description}">Pet Description</p>
-                    <a th:href="@{'/pets/' + ${pet.id}}" class="btn btn-primary">More Info</a>
+                    <a th:href="@{'/pets/' + ${pet.id}}" class="btn btn-primary">
+                        <i class="fa fa-fw fa-info-circle fa-lg"></i> More Info
+                    </a>
                 </div>
             </div>
         </div>

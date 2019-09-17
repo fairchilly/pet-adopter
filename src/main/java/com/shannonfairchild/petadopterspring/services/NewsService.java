@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface NewsService extends CrudService<News, Long> {
     List<News> findTop3ByOrderByCreatedDateDesc();
+    List<News> findAllByOrderByCreatedDateDesc();
 }

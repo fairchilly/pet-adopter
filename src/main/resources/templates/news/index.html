@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<navbar th:replace="fragments/navbar :: navbar"></navbar>
+<div class="container">
+    <div th:each="newsItem,iteration : ${news}" class="row">
+        <div class="col news-item">
+            <h5 class="card-title" th:text="${newsItem.title}">News Title</h5>
+            <p class="meta" th:text="${#temporals.format(newsItem.createdDate, 'MMMM d, yyyy')}">May 1, 2019</p>
+            <p>
+                <span class="card-text" th:text="${newsItem.substringSubtitle()}">News Subtitle</span>
+                <a th:href="@{'/news/' + ${newsItem.id}}">...read more</a>
+            </p>
+            <hr th:unless="${iteration.count == news.size()}">
+        </div>
+    </div>
+</div>
+</body>
+</html>

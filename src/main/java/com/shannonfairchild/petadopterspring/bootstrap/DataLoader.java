@@ -110,14 +110,14 @@ public class DataLoader implements CommandLineRunner {
         Page aboutPage = Page.builder()
                 .title("About")
                 .path("about")
-                .html_content("<h1>This is my about page!</h1>")
+                .html_content("<h1>About</h1><p>" + faker.lorem().paragraph() + "</p>")
                 .priority(1)
                 .build();
         pageService.save(aboutPage);
         Page contactUsPage = Page.builder()
                 .title("Contact Us")
                 .path("contact")
-                .html_content("<h1>This is my contact us page!</h1>")
+                .html_content("<h1>Contact Us</h1><p>" + faker.lorem().paragraph() + "</p>")
                 .priority(2)
                 .build();
         pageService.save(contactUsPage);
@@ -125,11 +125,19 @@ public class DataLoader implements CommandLineRunner {
 
     private void loadNews() {
         for (int x = 1; x <= 20; x++) {
+
+            StringBuilder builder = new StringBuilder();
+            faker.lorem().paragraphs(15).forEach(paragraph -> {
+                builder.append("<p>" + paragraph + "</p>");
+            });
+
+            String content = builder.toString();
+
             News newsItem = News.builder()
                     .author(faker.name().fullName())
                     .title(faker.lorem().sentence())
                     .subtitle(faker.lorem().sentence())
-                    .html_content(faker.lorem().paragraphs(4).toString())
+                    .html_content(content)
                     .visible(true)
                     .build();
             newsService.save(newsItem);
