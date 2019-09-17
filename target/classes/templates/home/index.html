@@ -62,7 +62,7 @@
                     <p class="meta" th:text="${#temporals.format(newsItem.createdDate, 'MMMM d, yyyy')}">May 1, 2019</p>
                     <p>
                         <span class="card-text" th:text="${newsItem.substringSubtitle()}">News Subtitle</span>
-                        <a th:href="@{'/news/view/' + ${newsItem.id}}">...read more</a>
+                        <a th:href="@{'/news/' + ${newsItem.id}}">...read more</a>
                     </p>
                     <hr th:unless="${iteration.count == news.size()}">
                 </div>
