@@ -7,8 +7,7 @@
     <!-- login -->
     <form class="form-horizontal" role="form" method="POST" th:action="@{/login}">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-6">
                 <h2>Please Login</h2>
                 <hr>
                 <div class="alert alert-danger" th:if="${param.error != null}">
@@ -18,11 +17,25 @@
                     You have been logged out.
                 </div>
             </div>
-            <div class="col-md-3"></div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+        <div class="row justify-content-md-center pt-5">
+            <div class="col-6">
+                <h2>Please Login</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-6">
+                <div class="alert alert-info">
+                    <p>
+                        <u>Demo credentials</u><br />
+                        User: <strong>admin@gmail.com</strong><br />
+                        Password: <strong>password</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-6">
                 <div class="form-group has-danger">
                     <label class="sr-only" for="email">E-Mail Address</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -35,11 +48,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
         </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+        <div class="row justify-content-md-center">
+            <div class="col-6">
                 <div class="form-group">
                     <label class="sr-only" for="password">Password</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -52,14 +63,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
         </div>
-        <div class="row" style="padding-top: 1rem">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+        <div class="row justify-content-md-center pt-3">
+            <div class="col-6">
                 <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
             </div>
-            <div class="col-md-3"></div>
         </div>
     </form>
 
