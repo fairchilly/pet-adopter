@@ -28,6 +28,7 @@ com\shannonfairchild\petadopterspring\services\PetTypeService.class
 com\shannonfairchild\petadopterspring\controller\AuthController.class
 com\shannonfairchild\petadopterspring\controller\PetController.class
 com\shannonfairchild\petadopterspring\controller\admin\NewsManagementController.class
+com\shannonfairchild\petadopterspring\scheduler\ScheduledTasks.class
 com\shannonfairchild\petadopterspring\model\Auditable.class
 com\shannonfairchild\petadopterspring\model\PetType$PetTypeBuilder.class
 com\shannonfairchild\petadopterspring\services\PetTypeServiceImpl.class

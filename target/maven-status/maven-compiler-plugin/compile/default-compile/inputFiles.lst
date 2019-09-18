@@ -30,6 +30,7 @@ C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\repositories\PetRepository.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\model\Auditable.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\repositories\UserRepository.java
+C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\scheduler\ScheduledTasks.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\services\PetTypeService.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\model\Sex.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\services\PageServiceImpl.java
