@@ -21,6 +21,7 @@ com\shannonfairchild\petadopterspring\services\NewsServiceImpl.class
 com\shannonfairchild\petadopterspring\repositories\UserRepository.class
 com\shannonfairchild\petadopterspring\services\PetServiceImpl.class
 com\shannonfairchild\petadopterspring\advice\PageAdvice.class
+com\shannonfairchild\petadopterspring\controller\CustomErrorController.class
 com\shannonfairchild\petadopterspring\services\UserServiceImpl.class
 com\shannonfairchild\petadopterspring\security\SecurityConfiguration.class
 com\shannonfairchild\petadopterspring\services\PetTypeService.class

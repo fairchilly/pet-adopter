@@ -2,6 +2,7 @@ package com.shannonfairchild.petadopterspring.controller.admin;
 
 import com.shannonfairchild.petadopterspring.model.Page;
 import com.shannonfairchild.petadopterspring.services.PageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,10 +12,11 @@ import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @RequestMapping("/admin/pages")
 @Controller
 public class PageManagementController {
-    private static final String VIEWS_PAGES_CREATE_OR_UPDATE_FORM = "/admin/pages/createOrUpdatePageForm";
+    private static final String VIEWS_PAGES_CREATE_OR_UPDATE_FORM = "admin/pages/createOrUpdatePageForm";
 
     private final PageService pageService;
 
@@ -28,12 +30,12 @@ public class PageManagementController {
         pageService.findAll().forEach(pages::add);
         model.addAttribute("pages", pages);
 
-        return "/admin/pages/index";
+        return "admin/pages/index";
     }
 
     @GetMapping("/create")
     public String initCreatePageForm(Model model) {
-        model.addAttribute("page", Page.builder().build());
+        model.addAttribute("page", new Page());
         return VIEWS_PAGES_CREATE_OR_UPDATE_FORM;
     }
 

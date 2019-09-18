@@ -17,7 +17,6 @@ import java.util.HashSet;
 
 @Slf4j
 @Component
-@Profile("default")
 public class DataLoader implements CommandLineRunner {
 
     @Autowired
@@ -43,6 +42,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         // Run if profile is default or if there is no data in database
         if (Arrays.stream(env.getActiveProfiles())
                 .anyMatch(env -> env.equalsIgnoreCase("default"))

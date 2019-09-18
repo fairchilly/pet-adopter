@@ -15,7 +15,7 @@ body, html {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.news-item > h1, h2, h3, h4, h5, h6 {
+.news-item-title {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 

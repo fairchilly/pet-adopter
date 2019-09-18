@@ -17,7 +17,7 @@ import java.util.*;
 @Controller
 public class PetManagementController {
 
-    private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "/admin/pets/createOrUpdatePetForm";
+    private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "admin/pets/createOrUpdatePetForm";
 
     private final PetService petService;
     private final PetTypeService petTypeService;
@@ -33,7 +33,7 @@ public class PetManagementController {
         petService.findAll().forEach(pets::add);
         model.addAttribute("pets", pets);
 
-        return "/admin/pets/index";
+        return "admin/pets/index";
     }
 
     @GetMapping("/create")

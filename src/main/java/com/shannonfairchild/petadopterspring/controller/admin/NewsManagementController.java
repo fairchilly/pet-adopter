@@ -29,7 +29,7 @@ public class NewsManagementController {
         newsService.findAll().forEach(news::add);
         model.addAttribute("news", news);
 
-        return "/admin/news/index";
+        return "admin/news/index";
     }
 
     @GetMapping("/create")

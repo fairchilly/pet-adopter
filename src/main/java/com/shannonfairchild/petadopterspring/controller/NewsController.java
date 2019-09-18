@@ -29,7 +29,7 @@ public class NewsController {
         List<News> news = newsService.findAllByOrderByCreatedDateDesc();
         model.addAttribute("news", news);
 
-        return "/news/index";
+        return "news/index";
     }
 
     @GetMapping("/create")
@@ -54,7 +54,7 @@ public class NewsController {
         News newsItem = newsService.findById(newsId);
         model.addAttribute("newsItem", newsItem);
 
-        return "/news/view";
+        return "news/view";
     }
 
     @GetMapping("/{newsId}/edit")

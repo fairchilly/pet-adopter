@@ -2,6 +2,7 @@ C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\repositories\PetTypeRepository.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\controller\admin\PageManagementController.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\services\PageService.java
+C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\controller\CustomErrorController.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\repositories\NewsRepository.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\controller\AuthController.java
 C:\Users\Shannon\Documents\Coding Projects\pet-adopter-spring\src\main\java\com\shannonfairchild\petadopterspring\services\NewsServiceImpl.java
