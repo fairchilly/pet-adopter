@@ -47,6 +47,11 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
+    public void deleteAll() {
+        pageRepository.deleteAll();
+    }
+
+    @Override
     public Page findByPath(String path) {
         return pageRepository.findByPath(path);
     }

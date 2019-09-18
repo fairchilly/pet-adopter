@@ -45,6 +45,11 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    public void deleteAll() {
+        petRepository.deleteAll();
+    }
+
+    @Override
     public Set<Pet> findFeatured() {
         Set<Pet> pets = new HashSet<>();
         petRepository.findTop5ByFeaturedTrueOrderByCreatedDate().forEach(pets::add);

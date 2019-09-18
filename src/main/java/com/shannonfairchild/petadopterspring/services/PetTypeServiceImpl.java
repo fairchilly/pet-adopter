@@ -43,4 +43,9 @@ public class PetTypeServiceImpl implements PetTypeService {
     public void deleteById(Long id) {
         petTypeRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteAll() {
+        petTypeRepository.deleteAll();
+    }
 }

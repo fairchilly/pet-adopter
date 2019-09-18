@@ -47,6 +47,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public void deleteAll() {
+        newsRepository.deleteAll();
+    }
+
+    @Override
     public List<News> findTop3ByOrderByCreatedDateDesc() {
         List<News> news = new ArrayList<>();
         newsRepository.findTop3ByOrderByCreatedDateDesc().forEach(news::add);
