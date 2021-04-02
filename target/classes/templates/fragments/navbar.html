@@ -4,7 +4,7 @@
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;"
      th:fragment="navbar">
-    <a class="navbar-brand" th:href="@{/}">
+    <a class="navbar-brand" th:href="@{'/'}">
         <i class="fa fa-fw fa-lg fa-paw"></i> Pet Adopter
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +16,10 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pets">Available Pets</a>
+                <a class="nav-link" th:href="@{'/pets'}">Available Pets</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/news">News</a>
+                <a class="nav-link" th:href="@{'~/news'}">News</a>
             </li>
             <li class="nav-item" th:each="navPage : ${navPages}">
                 <a class="nav-link" th:href="@{'/pages/' + ${navPage.path}}" th:text="${navPage.title}">Page Title</a>
