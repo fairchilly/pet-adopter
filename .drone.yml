@@ -11,7 +11,7 @@ steps:
     commands:
       - cd /var/www/projects/pet-adopter-spring
       - mvn package
-  - name: 'docker compose'
+  - name: 'docker'
     commands:
       - cd /var/www/projects/pet-adopter-spring
       - docker-compose up -d --build
