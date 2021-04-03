@@ -1,0 +1,13 @@
+kind: pipeline
+type: exec
+name: backend
+
+steps:
+  - name: 'git pull'
+    commands:
+      - cd /var/www/projects/pet-adopter-spring
+      - git pull
+  - name: 'docker compose'
+    commands:
+      - cd /var/www/projects/pet-adopter-spring
+      - docker-compose up -d --build
